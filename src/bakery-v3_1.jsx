@@ -798,7 +798,6 @@ export default function BakeryShop() {
                     setShowMobileMenu(false);
                   }}
                 >
-                  註冊新帳號
                 </span>
               </>
             )}
