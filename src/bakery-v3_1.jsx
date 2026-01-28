@@ -450,232 +450,239 @@ export default function BakeryShop() {
         </div>
       )}
 
-      {/* 頂部公告輪播 */}
+      {/* 固定頂部區域 */}
       <div style={{
-        background: `linear-gradient(135deg, ${theme.gold} 0%, ${theme.goldDark} 100%)`,
-        color: '#fff',
-        padding: '10px 16px',
-        textAlign: 'center',
-        fontSize: 12,
-        letterSpacing: 1,
-        fontFamily: "'Noto Sans TC', sans-serif",
-        position: 'relative',
-        zIndex: 100,
-      }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 8,
-        }}>
-          <span style={{ opacity: 0.8 }}>✦</span>
-          <span>{announcements[currentAnnouncementIndex]}</span>
-          <span style={{ opacity: 0.8 }}>✦</span>
-        </div>
-      </div>
-
-      {/* 頂部導航 - 響應式 */}
-      <header style={{
-        position: 'sticky',
+        position: 'fixed',
         top: 0,
-        backgroundColor: darkMode ? 'rgba(26,22,18,0.97)' : 'rgba(253,251,247,0.97)',
-        borderBottom: `1px solid ${theme.border}`,
-        padding: '16px 20px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        left: 0,
+        right: 0,
         zIndex: 100,
-        backdropFilter: 'blur(20px)',
       }}>
-        {/* Logo */}
-        <div style={{ textAlign: 'center', cursor: 'pointer', flexShrink: 0 }} onClick={() => setSelectedProduct(null)}>
-          <p style={{
-            fontSize: 9,
-            letterSpacing: 3,
-            color: theme.gold,
-            margin: '0 0 4px 0',
-            fontFamily: "'Noto Sans TC', sans-serif",
+        {/* 頂部公告輪播 */}
+        <div style={{
+          background: `linear-gradient(135deg, ${theme.gold} 0%, ${theme.goldDark} 100%)`,
+          color: '#fff',
+          padding: '10px 16px',
+          textAlign: 'center',
+          fontSize: 12,
+          letterSpacing: 1,
+          fontFamily: "'Noto Sans TC', sans-serif",
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 8,
           }}>
-            ─ 手工烘焙坊 ─
-          </p>
-          <h1 style={{
-            fontSize: 22,
-            fontWeight: 600,
-            letterSpacing: 6,
-            margin: 0,
-            color: theme.text,
-          }}>
-            麥香小屋
-          </h1>
-          <p style={{
-            fontSize: 8,
-            letterSpacing: 2,
-            margin: '4px 0 0 0',
-            color: theme.textMuted,
-            fontFamily: "'Noto Sans TC', sans-serif",
-          }}>
-            創立於 2020
-          </p>
+            <span style={{ opacity: 0.8 }}>✦</span>
+            <span>{announcements[currentAnnouncementIndex]}</span>
+            <span style={{ opacity: 0.8 }}>✦</span>
+          </div>
         </div>
 
-        {/* 桌面版導航 */}
-        <nav className="desktop-nav" style={{
+        {/* 頂部導航 - 響應式 */}
+        <header style={{
+          backgroundColor: darkMode ? 'rgba(26,22,18,0.97)' : 'rgba(253,251,247,0.97)',
+          borderBottom: `1px solid ${theme.border}`,
+          padding: '16px 20px',
           display: 'flex',
-          gap: 28,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          backdropFilter: 'blur(20px)',
         }}>
-          {['商品菜單', '最新消息', '關於我們', '聯絡我們'].map(item => (
-            <span key={item} style={{
-              fontSize: 13,
-              letterSpacing: 1,
-              cursor: 'pointer',
-              color: theme.textSecondary,
-              transition: 'all 0.3s',
+          {/* Logo */}
+          <div style={{ textAlign: 'center', cursor: 'pointer', flexShrink: 0 }} onClick={() => setSelectedProduct(null)}>
+            <p style={{
+              fontSize: 9,
+              letterSpacing: 3,
+              color: theme.gold,
+              margin: '0 0 4px 0',
               fontFamily: "'Noto Sans TC', sans-serif",
-            }}
-              onMouseEnter={e => e.target.style.color = theme.gold}
-              onMouseLeave={e => e.target.style.color = theme.textSecondary}>
-              {item}
-            </span>
-          ))}
-        </nav>
+            }}>
+              ─ 手工烘焙坊 ─
+            </p>
+            <h1 style={{
+              fontSize: 22,
+              fontWeight: 600,
+              letterSpacing: 6,
+              margin: 0,
+              color: theme.text,
+            }}>
+              麥香小屋
+            </h1>
+            <p style={{
+              fontSize: 8,
+              letterSpacing: 2,
+              margin: '4px 0 0 0',
+              color: theme.textMuted,
+              fontFamily: "'Noto Sans TC', sans-serif",
+            }}>
+              創立於 2020
+            </p>
+          </div>
 
-        {/* 右側按鈕區 */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: '50%',
-              border: `1.5px solid ${theme.borderGold}`,
-              backgroundColor: 'transparent',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: 16,
-              transition: 'all 0.3s ease',
-              color: theme.gold,
-              flexShrink: 0,
-            }}
-          >
-            {darkMode ? '☀' : '☽'}
-          </button>
+          {/* 桌面版導航 */}
+          <nav className="desktop-nav" style={{
+            display: 'flex',
+            gap: 28,
+          }}>
+            {['商品菜單', '最新消息', '關於我們', '聯絡我們'].map(item => (
+              <span key={item} style={{
+                fontSize: 13,
+                letterSpacing: 1,
+                cursor: 'pointer',
+                color: theme.textSecondary,
+                transition: 'all 0.3s',
+                fontFamily: "'Noto Sans TC', sans-serif",
+              }}
+                onMouseEnter={e => e.target.style.color = theme.gold}
+                onMouseLeave={e => e.target.style.color = theme.textSecondary}>
+                {item}
+              </span>
+            ))}
+          </nav>
 
-          <button
-            onClick={() => setShowCart(true)}
-            style={{
-              position: 'relative',
-              width: 40,
-              height: 40,
-              borderRadius: '50%',
-              border: `1.5px solid ${theme.borderGold}`,
-              backgroundColor: 'transparent',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: 16,
-              transition: 'all 0.3s ease',
-              color: theme.gold,
-              flexShrink: 0,
-            }}
-          >
-            🧺
-            {totalItems > 0 && (
-              <span style={{
-                position: 'absolute',
-                top: -4,
-                right: -4,
-                width: 18,
-                height: 18,
+          {/* 右側按鈕區 */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              style={{
+                width: 40,
+                height: 40,
                 borderRadius: '50%',
-                backgroundColor: theme.gold,
-                color: '#fff',
-                fontSize: 10,
-                fontWeight: 600,
+                border: `1.5px solid ${theme.borderGold}`,
+                backgroundColor: 'transparent',
+                cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontFamily: "'Noto Sans TC', sans-serif",
-              }}>
-                {totalItems}
-              </span>
-            )}
-          </button>
+                fontSize: 16,
+                transition: 'all 0.3s ease',
+                color: theme.gold,
+                flexShrink: 0,
+              }}
+            >
+              {darkMode ? '☀' : '☽'}
+            </button>
 
-          {isLoggedIn ? (
-            <div className="desktop-user" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{
-                fontSize: 13,
-                color: theme.text,
-                fontFamily: "'Noto Sans TC', sans-serif",
-              }}>
-                {currentUser}
-              </span>
-              <button
-                onClick={handleLogout}
-                style={{
-                  padding: '10px 18px',
-                  border: `1.5px solid ${theme.border}`,
-                  backgroundColor: 'transparent',
+            <button
+              onClick={() => setShowCart(true)}
+              style={{
+                position: 'relative',
+                width: 40,
+                height: 40,
+                borderRadius: '50%',
+                border: `1.5px solid ${theme.borderGold}`,
+                backgroundColor: 'transparent',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 16,
+                transition: 'all 0.3s ease',
+                color: theme.gold,
+                flexShrink: 0,
+              }}
+            >
+              🧺
+              {totalItems > 0 && (
+                <span style={{
+                  position: 'absolute',
+                  top: -4,
+                  right: -4,
+                  width: 18,
+                  height: 18,
+                  borderRadius: '50%',
+                  backgroundColor: theme.gold,
+                  color: '#fff',
+                  fontSize: 10,
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: "'Noto Sans TC', sans-serif",
+                }}>
+                  {totalItems}
+                </span>
+              )}
+            </button>
+
+            {isLoggedIn ? (
+              <div className="desktop-user" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <span style={{
+                  fontSize: 13,
                   color: theme.text,
-                  fontSize: 11,
+                  fontFamily: "'Noto Sans TC', sans-serif",
+                }}>
+                  {currentUser}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  style={{
+                    padding: '10px 18px',
+                    border: `1.5px solid ${theme.border}`,
+                    backgroundColor: 'transparent',
+                    color: theme.text,
+                    fontSize: 11,
+                    letterSpacing: 1,
+                    cursor: 'pointer',
+                    borderRadius: 4,
+                    fontFamily: "'Noto Sans TC', sans-serif",
+                  }}
+                >
+                  登出
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setShowLogin(true)}
+                className="login-btn"
+                style={{
+                  padding: '10px 20px',
+                  border: 'none',
+                  background: `linear-gradient(135deg, ${theme.accentBg} 0%, ${darkMode ? '#3d352a' : '#4a3c2a'} 100%)`,
+                  color: theme.accentText,
+                  fontSize: 12,
+                  fontWeight: 500,
                   letterSpacing: 1,
                   cursor: 'pointer',
                   borderRadius: 4,
                   fontFamily: "'Noto Sans TC', sans-serif",
+                  flexShrink: 0,
                 }}
               >
-                登出
+                登入
               </button>
-            </div>
-          ) : (
+            )}
+
+            {/* 手機版漢堡選單按鈕 */}
             <button
-              onClick={() => setShowLogin(true)}
-              className="login-btn"
+              className="mobile-menu-btn"
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
               style={{
-                padding: '10px 20px',
-                border: 'none',
-                background: `linear-gradient(135deg, ${theme.accentBg} 0%, ${darkMode ? '#3d352a' : '#4a3c2a'} 100%)`,
-                color: theme.accentText,
-                fontSize: 12,
-                fontWeight: 500,
-                letterSpacing: 1,
+                display: 'none',
+                width: 40,
+                height: 40,
+                border: `1px solid ${theme.border}`,
+                backgroundColor: 'transparent',
                 cursor: 'pointer',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 5,
                 borderRadius: 4,
-                fontFamily: "'Noto Sans TC', sans-serif",
-                flexShrink: 0,
               }}
             >
-              登入
+              <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
+              <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
+              <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
             </button>
-          )}
+          </div>
+        </header>
+      </div>
 
-          {/* 手機版漢堡選單按鈕 */}
-          <button
-            className="mobile-menu-btn"
-            onClick={() => setShowMobileMenu(!showMobileMenu)}
-            style={{
-              display: 'none',
-              width: 40,
-              height: 40,
-              border: `1px solid ${theme.border}`,
-              backgroundColor: 'transparent',
-              cursor: 'pointer',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 5,
-              borderRadius: 4,
-            }}
-          >
-            <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
-            <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
-            <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
-          </button>
-        </div>
-      </header>
+      {/* 佔位空間，避免內容被固定導航遮住 */}
+      <div style={{ height: 110 }} />
 
       {/* 手機版選單 */}
       {showMobileMenu && (
