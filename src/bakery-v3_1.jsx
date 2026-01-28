@@ -214,6 +214,12 @@ export default function BakeryShop() {
     ? products
     : products.filter(p => p.category === selectedCategory);
 
+  // 選擇商品時滾動到頂部
+  const handleSelectProduct = (product) => {
+    setSelectedProduct(product);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const showNotification = (message) => {
     setNotification(message);
     setTimeout(() => setNotification(''), 2500);
@@ -1308,7 +1314,7 @@ export default function BakeryShop() {
               {filteredProducts.map((product, index) => (
                 <div
                   key={product.id}
-                  onClick={() => setSelectedProduct(product)}
+                  onClick={() => handleSelectProduct(product)}
                   style={{
                     backgroundColor: theme.bgCard,
                     border: `1px solid ${theme.border}`,
