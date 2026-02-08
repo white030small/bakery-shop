@@ -4,130 +4,130 @@ import React, { useState } from 'react';
 
 // 麵包與甜點商品數據（加入詳細介紹）
 const products = [
-  {
-    id: 1,
-    name: '法式可頌',
-    price: 75,
-    image: '🥐',
-    description: '層層酥脆・法國奶油',
-    category: '麵包',
+  { 
+    id: 1, 
+    name: '法式可頌', 
+    price: 75, 
+    image: '🥐', 
+    description: '層層酥脆・法國奶油', 
+    category: '麵包', 
     badge: '招牌',
     fullDescription: '採用法國進口 AOP 認證奶油，經過72小時低溫發酵，手工反覆折疊27層，烘烤後外層金黃酥脆，內層柔軟蓬鬆，奶油香氣四溢。每一口都是法式經典的完美呈現。',
     ingredients: '法國奶油、高筋麵粉、天然酵母、海鹽、牛奶',
     storage: '常溫保存2天，冷凍可保存14天',
     calories: '約 280 大卡'
   },
-  {
-    id: 2,
-    name: '經典長棍',
-    price: 95,
-    image: '🥖',
-    description: '外酥內軟・傳統工法',
-    category: '麵包',
+  { 
+    id: 2, 
+    name: '經典長棍', 
+    price: 95, 
+    image: '🥖', 
+    description: '外酥內軟・傳統工法', 
+    category: '麵包', 
     badge: '',
     fullDescription: '遵循法國傳統工法製作，僅使用麵粉、水、鹽、酵母四種原料。外皮烤至金黃酥脆，輕敲會發出清脆聲響，內部組織充滿大小不一的氣孔，散發天然麥香。',
     ingredients: '法國麵粉、水、天然酵母、海鹽',
     storage: '當日食用最佳，可切片冷凍保存7天',
     calories: '約 320 大卡'
   },
-  {
-    id: 3,
-    name: '酸種麵包',
-    price: 180,
-    image: '🍞',
-    description: '48小時發酵・天然酵母',
-    category: '麵包',
+  { 
+    id: 3, 
+    name: '酸種麵包', 
+    price: 180, 
+    image: '🍞', 
+    description: '48小時發酵・天然酵母', 
+    category: '麵包', 
     badge: '職人手作',
     fullDescription: '使用培養超過5年的老麵種，經過48小時以上的長時間低溫發酵，讓麵包產生獨特的微酸風味與複雜的香氣層次。外皮厚實有嚼勁，內部濕潤Q彈。',
     ingredients: '有機石磨麵粉、水、天然老麵種、海鹽',
     storage: '常溫保存5天，切片冷凍可保存30天',
     calories: '約 180 大卡/片'
   },
-  {
-    id: 4,
-    name: '布里歐',
-    price: 120,
-    image: '🧈',
-    description: '奶油香濃・柔軟綿密',
-    category: '麵包',
+  { 
+    id: 4, 
+    name: '布里歐', 
+    price: 120, 
+    image: '🧈', 
+    description: '奶油香濃・柔軟綿密', 
+    category: '麵包', 
     badge: '',
     fullDescription: '法式經典奶油麵包，使用大量奶油與雞蛋製作，質地柔軟如雲朵，入口即化。淡淡的奶香與蛋香完美融合，是早餐或下午茶的最佳選擇。',
     ingredients: '法國奶油、雞蛋、高筋麵粉、牛奶、糖、天然酵母',
     storage: '常溫保存3天，密封冷凍可保存14天',
     calories: '約 340 大卡'
   },
-  {
-    id: 5,
-    name: '閃電泡芙',
-    price: 145,
-    image: '🍫',
-    description: '比利時巧克力・卡士達',
-    category: '甜點',
+  { 
+    id: 5, 
+    name: '閃電泡芙', 
+    price: 145, 
+    image: '🍫', 
+    description: '比利時巧克力・卡士達', 
+    category: '甜點', 
     badge: '主廚推薦',
     fullDescription: '經典法式閃電泡芙，酥脆的泡芙外殼填入滑順的香草卡士達醬，表面淋上70%比利時黑巧克力，三種口感與風味的完美結合。',
     ingredients: '比利時巧克力、鮮奶油、香草莢、雞蛋、奶油、麵粉',
     storage: '冷藏保存2天，不建議冷凍',
     calories: '約 260 大卡'
   },
-  {
-    id: 6,
-    name: '季節水果塔',
-    price: 165,
-    image: '🥧',
-    description: '杏仁奶油餡・當季鮮果',
-    category: '甜點',
+  { 
+    id: 6, 
+    name: '季節水果塔', 
+    price: 165, 
+    image: '🥧', 
+    description: '杏仁奶油餡・當季鮮果', 
+    category: '甜點', 
     badge: '季節限定',
     fullDescription: '酥脆的杏仁塔皮，填入香濃的杏仁奶油餡，鋪上當季新鮮水果。目前使用草莓、藍莓、奇異果等時令水果，每一口都是新鮮與甜蜜的享受。',
     ingredients: '杏仁粉、奶油、雞蛋、當季水果、糖粉',
     storage: '冷藏保存2天，建議當日食用',
     calories: '約 320 大卡'
   },
-  {
-    id: 7,
-    name: '馬卡龍',
-    price: 85,
-    image: '🧁',
-    description: '法式杏仁餅・六種口味',
-    category: '甜點',
+  { 
+    id: 7, 
+    name: '馬卡龍', 
+    price: 85, 
+    image: '🧁', 
+    description: '法式杏仁餅・六種口味', 
+    category: '甜點', 
     badge: '',
     fullDescription: '正統法式馬卡龍，外殼酥脆、內餡軟糯。提供六種口味：玫瑰荔枝、焦糖海鹽、抹茶、覆盆莓、檸檬、巧克力。每顆都是色彩與味覺的藝術品。',
     ingredients: '杏仁粉、蛋白、糖、天然色素、各式風味內餡',
     storage: '冷藏保存5天，冷凍可保存30天',
     calories: '約 90 大卡/顆'
   },
-  {
-    id: 8,
-    name: '千層派',
-    price: 175,
-    image: '🍰',
-    description: '酥皮千層・香草奶醬',
-    category: '甜點',
+  { 
+    id: 8, 
+    name: '千層派', 
+    price: 175, 
+    image: '🍰', 
+    description: '酥皮千層・香草奶醬', 
+    category: '甜點', 
     badge: '經典',
     fullDescription: '傳統法式千層派，層層酥脆的派皮經過反覆折疊擀壓，夾入以馬達加斯加香草莢熬煮的卡士達醬，灑上糖粉焦糖化，口感層次豐富。',
     ingredients: '法國奶油、麵粉、香草莢、鮮奶、雞蛋、糖',
     storage: '冷藏保存2天，不建議冷凍',
     calories: '約 380 大卡'
   },
-  {
-    id: 9,
-    name: '歌劇院蛋糕',
-    price: 195,
-    image: '🎂',
-    description: '咖啡巧克力・杏仁海綿',
-    category: '蛋糕',
+  { 
+    id: 9, 
+    name: '歌劇院蛋糕', 
+    price: 195, 
+    image: '🎂', 
+    description: '咖啡巧克力・杏仁海綿', 
+    category: '蛋糕', 
     badge: '人氣王',
     fullDescription: '經典法式甜點之王，由杏仁海綿蛋糕、咖啡糖漿、咖啡奶油餡、巧克力甘納許層層堆疊而成。咖啡的苦、巧克力的甜、杏仁的香完美平衡。',
     ingredients: '杏仁粉、可可粉、咖啡、鮮奶油、黑巧克力、雞蛋',
     storage: '冷藏保存3天',
     calories: '約 420 大卡/片'
   },
-  {
-    id: 10,
-    name: '巴斯克乳酪',
-    price: 165,
-    image: '🧀',
-    description: '焦香表面・濃郁內餡',
-    category: '蛋糕',
+  { 
+    id: 10, 
+    name: '巴斯克乳酪', 
+    price: 165, 
+    image: '🧀', 
+    description: '焦香表面・濃郁內餡', 
+    category: '蛋糕', 
     badge: '',
     fullDescription: '源自西班牙巴斯克地區的經典甜點，表面烤至焦黑，內部卻是滑嫩濃郁的乳酪餡。使用法國進口奶油乳酪，口感介於生乳酪與熟乳酪之間。',
     ingredients: '奶油乳酪、鮮奶油、雞蛋、糖、少許麵粉',
@@ -143,21 +143,45 @@ const newsItems = [
     date: '2025/01/25',
     title: '春節禮盒預購開跑！',
     content: '精選招牌商品組合，送禮自用兩相宜。1/31 前預購享 85 折優惠。',
-    tag: '優惠'
+    fullContent: '農曆新年即將到來，麥香小屋特別推出三款精美禮盒：\n\n🎁 經典禮盒（$880）：法式可頌x4、瑪德蓮x6、手工餅乾x8\n🎁 豪華禮盒（$1,280）：可頌x4、閃電泡芙x4、馬卡龍x6、磅蛋糕x1\n🎁 頂級禮盒（$1,880）：可頌x6、歌劇院蛋糕x1、馬卡龍x12、手工餅乾x12\n\n即日起至 1/31 前預購，全面享有 85 折優惠！數量有限，售完為止。\n\n📞 預購專線：(02) 2771-8888\n🏪 門市預購享額外贈品',
+    tag: '優惠',
+    image: '🎁'
   },
   {
     id: 2,
     date: '2025/01/20',
     title: '新品上市：草莓季限定商品',
     content: '使用苗栗大湖新鮮草莓，推出草莓可頌、草莓塔、草莓生乳捲等限定商品。',
-    tag: '新品'
+    fullContent: '草莓季來了！🍓\n\n我們嚴選苗栗大湖產地直送的新鮮草莓，推出多款季節限定商品：\n\n🥐 草莓可頌（$95）：酥脆可頌夾入新鮮草莓與卡士達醬\n🥧 草莓塔（$185）：杏仁塔皮、香草卡士達、滿滿新鮮草莓\n🍰 草莓生乳捲（$420）：綿密蛋糕體、北海道鮮奶油、整顆草莓\n🧁 草莓馬卡龍（$95）：草莓甘納許內餡，酸甜好滋味\n\n限定商品每日限量供應，售完為止。\n草莓季預計至 3 月底，敬請把握！',
+    tag: '新品',
+    image: '🍓'
   },
   {
     id: 3,
     date: '2025/01/15',
     title: '門市營業時間調整公告',
     content: '春節期間（1/28-2/2）營業時間調整為 09:00-18:00，造成不便敬請見諒。',
-    tag: '公告'
+    fullContent: '親愛的顧客您好：\n\n農曆春節期間，本店營業時間調整如下：\n\n📅 1/27（除夕前一天）：09:00 - 18:00\n📅 1/28（除夕）：09:00 - 15:00\n📅 1/29 - 1/31（初一至初三）：公休\n📅 2/1 - 2/2（初四至初五）：10:00 - 18:00\n📅 2/3（初六）起：恢復正常營業 07:00 - 20:00\n\n春節期間訂單，建議於 1/26 前完成預訂，以確保取貨時間。\n\n感謝您的支持與體諒，麥香小屋全體同仁祝您新年快樂！🧧',
+    tag: '公告',
+    image: '📅'
+  },
+  {
+    id: 4,
+    date: '2025/01/10',
+    title: '會員制度全新升級',
+    content: '消費即可累積點數，點數可折抵現金或兌換限定商品。',
+    fullContent: '麥香小屋會員制度全新升級！🌟\n\n【累點方式】\n消費每滿 $50 即可獲得 1 點\n生日當月消費點數雙倍計算\n\n【點數使用】\n10 點 = 折抵 $10\n50 點 = 兌換瑪德蓮 x2\n100 點 = 兌換任選飲品 x1\n200 點 = 兌換可頌禮盒（4入）\n\n【會員等級】\n🥉 銅卡會員：累積消費滿 $3,000\n🥈 銀卡會員：累積消費滿 $10,000（享95折）\n🥇 金卡會員：累積消費滿 $30,000（享9折）\n\n立即加入會員，享受更多專屬優惠！',
+    tag: '公告',
+    image: '⭐'
+  },
+  {
+    id: 5,
+    date: '2025/01/05',
+    title: '烘焙教室開課啦！',
+    content: '由主廚親自授課，帶您體驗手作烘焙的樂趣。',
+    fullContent: '麥香小屋烘焙教室正式開課！👨‍🍳\n\n由我們的主廚親自授課，帶您從零開始體驗手作烘焙的樂趣。\n\n【近期課程】\n\n📚 法式可頌入門班\n日期：每週六 14:00-17:00\n費用：$1,800/人（含材料與成品帶回）\n\n📚 馬卡龍專修班\n日期：每週日 14:00-17:00\n費用：$2,200/人（含材料與成品帶回）\n\n📚 生日蛋糕裝飾班\n日期：每月第二個週六 10:00-14:00\n費用：$2,500/人（含6吋蛋糕帶回）\n\n🎯 報名方式：門市報名或來電預約\n📞 報名專線：(02) 2771-8888\n\n名額有限，額滿為止！',
+    tag: '新品',
+    image: '👨‍🍳'
   },
 ];
 
@@ -183,11 +207,12 @@ export default function BakeryShop() {
   const [checkoutComplete, setCheckoutComplete] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('全部');
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedNews, setSelectedNews] = useState(null);
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-
+  
   const [loginForm, setLoginForm] = useState({ email: '', password: '' });
-
+  
   const [registerForm, setRegisterForm] = useState({
     lastName: '',
     firstName: '',
@@ -210,8 +235,8 @@ export default function BakeryShop() {
     return () => clearInterval(timer);
   }, []);
 
-  const filteredProducts = selectedCategory === '全部'
-    ? products
+  const filteredProducts = selectedCategory === '全部' 
+    ? products 
     : products.filter(p => p.category === selectedCategory);
 
   // 選擇商品時滾動到頂部
@@ -233,7 +258,7 @@ export default function BakeryShop() {
     }
     const existing = cart.find(item => item.id === product.id);
     if (existing) {
-      setCart(cart.map(item =>
+      setCart(cart.map(item => 
         item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
       ));
     } else {
@@ -343,10 +368,10 @@ export default function BakeryShop() {
   // 裝飾性 SVG 組件
   const OrnamentDivider = ({ width = 200 }) => (
     <svg width={width} height="20" viewBox="0 0 200 20" style={{ display: 'block', margin: '0 auto', maxWidth: '100%' }}>
-      <path d="M0 10 Q25 0 50 10 T100 10 T150 10 T200 10" fill="none" stroke={theme.gold} strokeWidth="1" opacity="0.5" />
-      <circle cx="100" cy="10" r="3" fill={theme.gold} opacity="0.8" />
-      <circle cx="70" cy="10" r="1.5" fill={theme.gold} opacity="0.5" />
-      <circle cx="130" cy="10" r="1.5" fill={theme.gold} opacity="0.5" />
+      <path d="M0 10 Q25 0 50 10 T100 10 T150 10 T200 10" fill="none" stroke={theme.gold} strokeWidth="1" opacity="0.5"/>
+      <circle cx="100" cy="10" r="3" fill={theme.gold} opacity="0.8"/>
+      <circle cx="70" cy="10" r="1.5" fill={theme.gold} opacity="0.5"/>
+      <circle cx="130" cy="10" r="1.5" fill={theme.gold} opacity="0.5"/>
     </svg>
   );
 
@@ -364,21 +389,21 @@ export default function BakeryShop() {
       bottomLeft: { bottom: 0, left: 0 },
     };
     return (
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 60 60"
-        style={{
-          position: 'absolute',
+      <svg 
+        width="40" 
+        height="40" 
+        viewBox="0 0 60 60" 
+        style={{ 
+          position: 'absolute', 
           ...positions[position],
           opacity: 0.3,
           transform: transforms[position],
           transformOrigin: 'center',
         }}
       >
-        <path d="M0 0 L0 30 Q0 0 30 0" fill="none" stroke={theme.gold} strokeWidth="1.5" />
-        <path d="M0 0 L0 20 Q0 0 20 0" fill="none" stroke={theme.gold} strokeWidth="1" />
-        <circle cx="8" cy="8" r="2" fill={theme.gold} />
+        <path d="M0 0 L0 30 Q0 0 30 0" fill="none" stroke={theme.gold} strokeWidth="1.5"/>
+        <path d="M0 0 L0 20 Q0 0 20 0" fill="none" stroke={theme.gold} strokeWidth="1"/>
+        <circle cx="8" cy="8" r="2" fill={theme.gold}/>
       </svg>
     );
   };
@@ -414,7 +439,7 @@ export default function BakeryShop() {
             radial-gradient(ellipse at 80% 80%, ${darkMode ? 'rgba(201, 169, 98, 0.03)' : 'rgba(201, 169, 98, 0.05)'} 0%, transparent 50%)
           `,
         }} />
-
+        
         {/* 細緻點狀紋理 */}
         <div style={{
           position: 'absolute',
@@ -490,194 +515,194 @@ export default function BakeryShop() {
           alignItems: 'center',
           backdropFilter: 'blur(20px)',
         }}>
-          {/* Logo */}
-          <div style={{ textAlign: 'center', cursor: 'pointer', flexShrink: 0 }} onClick={() => setSelectedProduct(null)}>
-            <p style={{
-              fontSize: 9,
-              letterSpacing: 3,
-              color: theme.gold,
-              margin: '0 0 4px 0',
-              fontFamily: "'Noto Sans TC', sans-serif",
-            }}>
-              ─ 手工烘焙坊 ─
-            </p>
-            <h1 style={{
-              fontSize: 22,
-              fontWeight: 600,
-              letterSpacing: 6,
-              margin: 0,
-              color: theme.text,
-            }}>
-              麥香小屋
-            </h1>
-            <p style={{
-              fontSize: 8,
-              letterSpacing: 2,
-              margin: '4px 0 0 0',
-              color: theme.textMuted,
-              fontFamily: "'Noto Sans TC', sans-serif",
-            }}>
-              創立於 2020
-            </p>
-          </div>
-
-          {/* 桌面版導航 */}
-          <nav className="desktop-nav" style={{
-            display: 'flex',
-            gap: 28,
+        {/* Logo */}
+        <div style={{ textAlign: 'center', cursor: 'pointer', flexShrink: 0 }} onClick={() => setSelectedProduct(null)}>
+          <p style={{
+            fontSize: 9,
+            letterSpacing: 3,
+            color: theme.gold,
+            margin: '0 0 4px 0',
+            fontFamily: "'Noto Sans TC', sans-serif",
           }}>
-            {['商品菜單', '最新消息', '關於我們', '聯絡我們'].map(item => (
-              <span key={item} style={{
-                fontSize: 13,
-                letterSpacing: 1,
-                cursor: 'pointer',
-                color: theme.textSecondary,
-                transition: 'all 0.3s',
+            ─ 手工烘焙坊 ─
+          </p>
+          <h1 style={{
+            fontSize: 22,
+            fontWeight: 600,
+            letterSpacing: 6,
+            margin: 0,
+            color: theme.text,
+          }}>
+            麥香小屋
+          </h1>
+          <p style={{
+            fontSize: 8,
+            letterSpacing: 2,
+            margin: '4px 0 0 0',
+            color: theme.textMuted,
+            fontFamily: "'Noto Sans TC', sans-serif",
+          }}>
+            創立於 2020
+          </p>
+        </div>
+
+        {/* 桌面版導航 */}
+        <nav className="desktop-nav" style={{ 
+          display: 'flex', 
+          gap: 28,
+        }}>
+          {['商品菜單', '最新消息', '關於我們', '聯絡我們'].map(item => (
+            <span key={item} style={{
+              fontSize: 13,
+              letterSpacing: 1,
+              cursor: 'pointer',
+              color: theme.textSecondary,
+              transition: 'all 0.3s',
+              fontFamily: "'Noto Sans TC', sans-serif",
+            }} 
+            onMouseEnter={e => e.target.style.color = theme.gold}
+            onMouseLeave={e => e.target.style.color = theme.textSecondary}>
+              {item}
+            </span>
+          ))}
+        </nav>
+
+        {/* 右側按鈕區 */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: '50%',
+              border: `1.5px solid ${theme.borderGold}`,
+              backgroundColor: 'transparent',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 16,
+              transition: 'all 0.3s ease',
+              color: theme.gold,
+              flexShrink: 0,
+            }}
+          >
+            {darkMode ? '☀' : '☽'}
+          </button>
+
+          <button
+            onClick={() => setShowCart(true)}
+            style={{
+              position: 'relative',
+              width: 40,
+              height: 40,
+              borderRadius: '50%',
+              border: `1.5px solid ${theme.borderGold}`,
+              backgroundColor: 'transparent',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 16,
+              transition: 'all 0.3s ease',
+              color: theme.gold,
+              flexShrink: 0,
+            }}
+          >
+            🧺
+            {totalItems > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: -4,
+                right: -4,
+                width: 18,
+                height: 18,
+                borderRadius: '50%',
+                backgroundColor: theme.gold,
+                color: '#fff',
+                fontSize: 10,
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 fontFamily: "'Noto Sans TC', sans-serif",
-              }}
-                onMouseEnter={e => e.target.style.color = theme.gold}
-                onMouseLeave={e => e.target.style.color = theme.textSecondary}>
-                {item}
+              }}>
+                {totalItems}
               </span>
-            ))}
-          </nav>
+            )}
+          </button>
 
-          {/* 右側按鈕區 */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              style={{
-                width: 40,
-                height: 40,
-                borderRadius: '50%',
-                border: `1.5px solid ${theme.borderGold}`,
-                backgroundColor: 'transparent',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 16,
-                transition: 'all 0.3s ease',
-                color: theme.gold,
-                flexShrink: 0,
-              }}
-            >
-              {darkMode ? '☀' : '☽'}
-            </button>
-
-            <button
-              onClick={() => setShowCart(true)}
-              style={{
-                position: 'relative',
-                width: 40,
-                height: 40,
-                borderRadius: '50%',
-                border: `1.5px solid ${theme.borderGold}`,
-                backgroundColor: 'transparent',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 16,
-                transition: 'all 0.3s ease',
-                color: theme.gold,
-                flexShrink: 0,
-              }}
-            >
-              🧺
-              {totalItems > 0 && (
-                <span style={{
-                  position: 'absolute',
-                  top: -4,
-                  right: -4,
-                  width: 18,
-                  height: 18,
-                  borderRadius: '50%',
-                  backgroundColor: theme.gold,
-                  color: '#fff',
-                  fontSize: 10,
-                  fontWeight: 600,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: "'Noto Sans TC', sans-serif",
-                }}>
-                  {totalItems}
-                </span>
-              )}
-            </button>
-
-            {isLoggedIn ? (
-              <div className="desktop-user" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <span style={{
-                  fontSize: 13,
-                  color: theme.text,
-                  fontFamily: "'Noto Sans TC', sans-serif",
-                }}>
-                  {currentUser}
-                </span>
-                <button
-                  onClick={handleLogout}
-                  style={{
-                    padding: '10px 18px',
-                    border: `1.5px solid ${theme.border}`,
-                    backgroundColor: 'transparent',
-                    color: theme.text,
-                    fontSize: 11,
-                    letterSpacing: 1,
-                    cursor: 'pointer',
-                    borderRadius: 4,
-                    fontFamily: "'Noto Sans TC', sans-serif",
-                  }}
-                >
-                  登出
-                </button>
-              </div>
-            ) : (
+          {isLoggedIn ? (
+            <div className="desktop-user" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <span style={{ 
+                fontSize: 13, 
+                color: theme.text,
+                fontFamily: "'Noto Sans TC', sans-serif",
+              }}>
+                {currentUser}
+              </span>
               <button
-                onClick={() => setShowLogin(true)}
-                className="login-btn"
+                onClick={handleLogout}
                 style={{
-                  padding: '10px 20px',
-                  border: 'none',
-                  background: `linear-gradient(135deg, ${theme.accentBg} 0%, ${darkMode ? '#3d352a' : '#4a3c2a'} 100%)`,
-                  color: theme.accentText,
-                  fontSize: 12,
-                  fontWeight: 500,
+                  padding: '10px 18px',
+                  border: `1.5px solid ${theme.border}`,
+                  backgroundColor: 'transparent',
+                  color: theme.text,
+                  fontSize: 11,
                   letterSpacing: 1,
                   cursor: 'pointer',
                   borderRadius: 4,
                   fontFamily: "'Noto Sans TC', sans-serif",
-                  flexShrink: 0,
                 }}
               >
-                登入
+                登出
               </button>
-            )}
-
-            {/* 手機版漢堡選單按鈕 */}
+            </div>
+          ) : (
             <button
-              className="mobile-menu-btn"
-              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              onClick={() => setShowLogin(true)}
+              className="login-btn"
               style={{
-                display: 'none',
-                width: 40,
-                height: 40,
-                border: `1px solid ${theme.border}`,
-                backgroundColor: 'transparent',
+                padding: '10px 20px',
+                border: 'none',
+                background: `linear-gradient(135deg, ${theme.accentBg} 0%, ${darkMode ? '#3d352a' : '#4a3c2a'} 100%)`,
+                color: theme.accentText,
+                fontSize: 12,
+                fontWeight: 500,
+                letterSpacing: 1,
                 cursor: 'pointer',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 5,
                 borderRadius: 4,
+                fontFamily: "'Noto Sans TC', sans-serif",
+                flexShrink: 0,
               }}
             >
-              <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
-              <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
-              <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
+              登入
             </button>
-          </div>
+          )}
+
+          {/* 手機版漢堡選單按鈕 */}
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setShowMobileMenu(!showMobileMenu)}
+            style={{
+              display: 'none',
+              width: 40,
+              height: 40,
+              border: `1px solid ${theme.border}`,
+              backgroundColor: 'transparent',
+              cursor: 'pointer',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 5,
+              borderRadius: 4,
+            }}
+          >
+            <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
+            <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
+            <span style={{ width: 18, height: 2, backgroundColor: theme.text, transition: 'all 0.3s' }} />
+          </button>
+        </div>
         </header>
       </div>
 
@@ -714,10 +739,10 @@ export default function BakeryShop() {
           >
             ✕
           </button>
-          <nav style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 24,
+          <nav style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: 24, 
             marginTop: 80,
             alignItems: 'center',
           }}>
@@ -732,7 +757,7 @@ export default function BakeryShop() {
                 {item}
               </span>
             ))}
-
+            
             {/* 分隔線 */}
             <div style={{
               width: 60,
@@ -740,7 +765,7 @@ export default function BakeryShop() {
               backgroundColor: theme.border,
               margin: '8px 0',
             }} />
-
+            
             {/* 登入/登出選項 */}
             {isLoggedIn ? (
               <>
@@ -751,14 +776,14 @@ export default function BakeryShop() {
                 }}>
                   👋 {currentUser}
                 </span>
-                <span
+                <span 
                   style={{
                     fontSize: 18,
                     letterSpacing: 3,
                     cursor: 'pointer',
                     color: theme.text,
                     fontFamily: "'Noto Sans TC', sans-serif",
-                  }}
+                  }} 
                   onClick={() => {
                     handleLogout();
                     setShowMobileMenu(false);
@@ -769,7 +794,7 @@ export default function BakeryShop() {
               </>
             ) : (
               <>
-                <span
+                <span 
                   style={{
                     fontSize: 18,
                     letterSpacing: 3,
@@ -777,7 +802,7 @@ export default function BakeryShop() {
                     color: theme.gold,
                     fontFamily: "'Noto Sans TC', sans-serif",
                     fontWeight: 500,
-                  }}
+                  }} 
                   onClick={() => {
                     setShowLogin(true);
                     setShowMobileMenu(false);
@@ -785,19 +810,20 @@ export default function BakeryShop() {
                 >
                   登入
                 </span>
-                <span
+                <span 
                   style={{
                     fontSize: 16,
                     letterSpacing: 2,
                     cursor: 'pointer',
                     color: theme.textSecondary,
                     fontFamily: "'Noto Sans TC', sans-serif",
-                  }}
+                  }} 
                   onClick={() => {
                     setShowRegister(true);
                     setShowMobileMenu(false);
                   }}
                 >
+                  註冊新帳號
                 </span>
               </>
             )}
@@ -856,7 +882,7 @@ export default function BakeryShop() {
               <CornerOrnament position="topRight" />
               <CornerOrnament position="bottomLeft" />
               <CornerOrnament position="bottomRight" />
-
+              
               {selectedProduct.badge && (
                 <div style={{
                   position: 'absolute',
@@ -1122,7 +1148,7 @@ export default function BakeryShop() {
               }}>
                 用心烘焙・傳遞溫暖
               </p>
-
+              
               <h2 style={{
                 fontSize: 'clamp(28px, 8vw, 52px)',
                 fontWeight: 400,
@@ -1145,7 +1171,7 @@ export default function BakeryShop() {
               }}>
                 麥香的溫度
               </h2>
-
+              
               <p style={{
                 fontSize: 14,
                 color: theme.textSecondary,
@@ -1213,8 +1239,9 @@ export default function BakeryShop() {
             borderBottom: `1px solid ${theme.border}`,
             position: 'relative',
             zIndex: 1,
+            overflow: 'hidden',
           }}>
-            <div style={{ maxWidth: 1000, margin: '0 auto' }}>
+            <div style={{ maxWidth: 1200, margin: '0 auto' }}>
               <div style={{ textAlign: 'center', marginBottom: 40 }}>
                 <span style={{ color: theme.gold, fontSize: 18 }}>✦</span>
                 <h3 style={{
@@ -1237,67 +1264,246 @@ export default function BakeryShop() {
                 </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                {newsItems.map((news, idx) => (
-                  <div
-                    key={news.id}
-                    style={{
-                      padding: '20px',
-                      backgroundColor: theme.bgSecondary,
-                      border: `1px solid ${theme.border}`,
-                      cursor: 'pointer',
-                      borderRadius: 8,
-                    }}
-                  >
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 12,
-                      marginBottom: 12,
-                    }}>
+              {/* 橫式滑動公告 */}
+              <div style={{
+                overflow: 'hidden',
+                position: 'relative',
+              }}>
+                <div 
+                  className="news-slider"
+                  style={{
+                    display: 'flex',
+                    gap: 20,
+                    animation: 'slideNews 20s linear infinite',
+                    width: 'fit-content',
+                  }}
+                >
+                  {/* 複製兩次以實現無縫滾動 */}
+                  {[...newsItems, ...newsItems].map((news, idx) => (
+                    <div
+                      key={`${news.id}-${idx}`}
+                      onClick={() => setSelectedNews(news)}
+                      style={{
+                        width: 220,
+                        height: 220,
+                        padding: 20,
+                        backgroundColor: theme.bgSecondary,
+                        border: `1px solid ${theme.border}`,
+                        borderRadius: 12,
+                        cursor: 'pointer',
+                        flexShrink: 0,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        transition: 'all 0.3s ease',
+                        position: 'relative',
+                        overflow: 'hidden',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-5px)';
+                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    >
+                      {/* 圖示 */}
+                      <div style={{
+                        fontSize: 36,
+                        marginBottom: 12,
+                      }}>
+                        {news.image}
+                      </div>
+                      
+                      {/* 標籤 */}
                       <span style={{
-                        padding: '4px 10px',
-                        background: news.tag === '優惠'
+                        position: 'absolute',
+                        top: 12,
+                        right: 12,
+                        padding: '4px 8px',
+                        background: news.tag === '優惠' 
                           ? `linear-gradient(135deg, ${theme.gold} 0%, ${theme.goldDark} 100%)`
-                          : news.tag === '新品'
+                          : news.tag === '新品' 
                             ? 'linear-gradient(135deg, #6b8f6b 0%, #4a6b4a 100%)'
                             : `linear-gradient(135deg, ${theme.textMuted} 0%, ${theme.textSecondary} 100%)`,
                         color: '#fff',
                         fontSize: 10,
                         fontFamily: "'Noto Sans TC', sans-serif",
-                        borderRadius: 2,
+                        borderRadius: 4,
                       }}>
                         {news.tag}
                       </span>
-                      <span style={{
-                        fontSize: 11,
+
+                      {/* 標題 */}
+                      <h4 style={{
+                        fontSize: 14,
+                        fontWeight: 600,
+                        margin: '0 0 8px 0',
+                        lineHeight: 1.4,
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                      }}>
+                        {news.title}
+                      </h4>
+
+                      {/* 內容預覽 */}
+                      <p style={{
+                        fontSize: 12,
                         color: theme.textSecondary,
+                        margin: 0,
+                        lineHeight: 1.6,
+                        flex: 1,
+                        display: '-webkit-box',
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                        fontFamily: "'Noto Sans TC', sans-serif",
+                      }}>
+                        {news.content}
+                      </p>
+
+                      {/* 日期 */}
+                      <div style={{
+                        fontSize: 11,
+                        color: theme.textMuted,
+                        marginTop: 10,
                         fontFamily: "'Noto Sans TC', sans-serif",
                       }}>
                         {news.date}
-                      </span>
+                      </div>
                     </div>
-                    <h4 style={{
-                      fontSize: 15,
-                      fontWeight: 500,
-                      margin: '0 0 8px 0',
-                    }}>
-                      {news.title}
-                    </h4>
-                    <p style={{
-                      fontSize: 13,
-                      color: theme.textSecondary,
-                      margin: 0,
-                      lineHeight: 1.8,
-                      fontFamily: "'Noto Sans TC', sans-serif",
-                    }}>
-                      {news.content}
-                    </p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
+
+              {/* 點擊提示 */}
+              <p style={{
+                textAlign: 'center',
+                fontSize: 12,
+                color: theme.textMuted,
+                marginTop: 24,
+                fontFamily: "'Noto Sans TC', sans-serif",
+              }}>
+                點擊卡片查看完整內容
+              </p>
             </div>
           </section>
+
+          {/* 公告詳細彈窗 */}
+          {selectedNews && (
+            <div 
+              style={{
+                position: 'fixed',
+                inset: 0,
+                backgroundColor: 'rgba(0,0,0,0.7)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 200,
+                padding: 20,
+                backdropFilter: 'blur(8px)',
+              }}
+              onClick={() => setSelectedNews(null)}
+            >
+              <div 
+                style={{
+                  backgroundColor: theme.bgSecondary,
+                  borderRadius: 16,
+                  width: '100%',
+                  maxWidth: 500,
+                  maxHeight: '80vh',
+                  overflow: 'auto',
+                  position: 'relative',
+                }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* 頂部裝飾 */}
+                <div style={{
+                  background: `linear-gradient(135deg, ${theme.gold} 0%, ${theme.goldDark} 100%)`,
+                  padding: '30px 24px',
+                  textAlign: 'center',
+                }}>
+                  <span style={{ fontSize: 48 }}>{selectedNews.image}</span>
+                </div>
+
+                {/* 內容 */}
+                <div style={{ padding: 24 }}>
+                  {/* 標籤和日期 */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: 16,
+                  }}>
+                    <span style={{
+                      padding: '5px 12px',
+                      background: selectedNews.tag === '優惠' 
+                        ? `linear-gradient(135deg, ${theme.gold} 0%, ${theme.goldDark} 100%)`
+                        : selectedNews.tag === '新品' 
+                          ? 'linear-gradient(135deg, #6b8f6b 0%, #4a6b4a 100%)'
+                          : `linear-gradient(135deg, ${theme.textMuted} 0%, ${theme.textSecondary} 100%)`,
+                      color: '#fff',
+                      fontSize: 11,
+                      fontFamily: "'Noto Sans TC', sans-serif",
+                      borderRadius: 4,
+                    }}>
+                      {selectedNews.tag}
+                    </span>
+                    <span style={{
+                      fontSize: 12,
+                      color: theme.textMuted,
+                      fontFamily: "'Noto Sans TC', sans-serif",
+                    }}>
+                      {selectedNews.date}
+                    </span>
+                  </div>
+
+                  {/* 標題 */}
+                  <h2 style={{
+                    fontSize: 22,
+                    fontWeight: 600,
+                    margin: '0 0 20px 0',
+                    lineHeight: 1.4,
+                  }}>
+                    {selectedNews.title}
+                  </h2>
+
+                  {/* 完整內容 */}
+                  <div style={{
+                    fontSize: 14,
+                    color: theme.textSecondary,
+                    lineHeight: 2,
+                    whiteSpace: 'pre-line',
+                    fontFamily: "'Noto Sans TC', sans-serif",
+                  }}>
+                    {selectedNews.fullContent}
+                  </div>
+
+                  {/* 關閉按鈕 */}
+                  <button
+                    onClick={() => setSelectedNews(null)}
+                    style={{
+                      width: '100%',
+                      padding: '14px',
+                      marginTop: 24,
+                      border: 'none',
+                      borderRadius: 8,
+                      backgroundColor: theme.gold,
+                      color: '#fff',
+                      fontSize: 14,
+                      fontWeight: 500,
+                      cursor: 'pointer',
+                      fontFamily: "'Noto Sans TC', sans-serif",
+                    }}
+                  >
+                    關閉
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* 分類選擇 */}
           <section style={{
@@ -1410,7 +1616,7 @@ export default function BakeryShop() {
                     borderBottom: `1px solid ${theme.border}`,
                   }}>
                     <span>{product.image}</span>
-
+                    
                     {product.badge && (
                       <div style={{
                         position: 'absolute',
@@ -1428,7 +1634,7 @@ export default function BakeryShop() {
                       </div>
                     )}
                   </div>
-
+                  
                   <div style={{ padding: 20 }}>
                     <div style={{
                       display: 'flex',
@@ -1457,7 +1663,7 @@ export default function BakeryShop() {
                         {product.category}
                       </span>
                     </div>
-
+                    
                     <p style={{
                       fontSize: 12,
                       color: theme.textSecondary,
@@ -1466,13 +1672,13 @@ export default function BakeryShop() {
                     }}>
                       {product.description}
                     </p>
-
+                    
                     <div style={{
                       height: 1,
                       background: `linear-gradient(90deg, ${theme.border}, transparent)`,
                       marginBottom: 16,
                     }} />
-
+                    
                     <div style={{
                       display: 'flex',
                       justifyContent: 'space-between',
@@ -1534,7 +1740,7 @@ export default function BakeryShop() {
               <div style={{ marginBottom: 32 }}>
                 <OrnamentDivider width={160} />
               </div>
-
+              
               <p style={{
                 fontSize: 14,
                 color: theme.textSecondary,
@@ -1623,7 +1829,7 @@ export default function BakeryShop() {
           }} onClick={e => e.stopPropagation()}>
             <CornerOrnament position="topLeft" />
             <CornerOrnament position="topRight" />
-
+            
             <div style={{ textAlign: 'center', marginBottom: 32 }}>
               <span style={{ color: theme.gold, fontSize: 24 }}>✦</span>
               <h3 style={{
@@ -1643,7 +1849,7 @@ export default function BakeryShop() {
                 登入以繼續購物
               </p>
             </div>
-
+            
             <form onSubmit={handleLogin}>
               <div style={{ marginBottom: 20 }}>
                 <label style={{
@@ -1660,7 +1866,7 @@ export default function BakeryShop() {
                   type="email"
                   placeholder="your@email.com"
                   value={loginForm.email}
-                  onChange={e => setLoginForm({ ...loginForm, email: e.target.value })}
+                  onChange={e => setLoginForm({...loginForm, email: e.target.value})}
                   style={{
                     width: '100%',
                     padding: 14,
@@ -1675,7 +1881,7 @@ export default function BakeryShop() {
                   }}
                 />
               </div>
-
+              
               <div style={{ marginBottom: 24 }}>
                 <label style={{
                   display: 'block',
@@ -1691,7 +1897,7 @@ export default function BakeryShop() {
                   type="password"
                   placeholder="••••••••"
                   value={loginForm.password}
-                  onChange={e => setLoginForm({ ...loginForm, password: e.target.value })}
+                  onChange={e => setLoginForm({...loginForm, password: e.target.value})}
                   style={{
                     width: '100%',
                     padding: 14,
@@ -1706,7 +1912,7 @@ export default function BakeryShop() {
                   }}
                 />
               </div>
-
+              
               <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -1736,7 +1942,7 @@ export default function BakeryShop() {
                   忘記密碼？
                 </span>
               </div>
-
+              
               <button
                 type="submit"
                 style={{
@@ -1757,7 +1963,7 @@ export default function BakeryShop() {
                 登入
               </button>
             </form>
-
+            
             <p style={{
               textAlign: 'center',
               color: theme.textSecondary,
@@ -1802,7 +2008,7 @@ export default function BakeryShop() {
           }} onClick={e => e.stopPropagation()}>
             <CornerOrnament position="topLeft" />
             <CornerOrnament position="topRight" />
-
+            
             <div style={{ textAlign: 'center', marginBottom: 28 }}>
               <span style={{ color: theme.gold, fontSize: 24 }}>✦</span>
               <h3 style={{
@@ -1822,7 +2028,7 @@ export default function BakeryShop() {
                 填寫以下資料，享受專屬會員優惠
               </p>
             </div>
-
+            
             <form onSubmit={handleRegister}>
               {/* 基本資料 */}
               <div style={{
@@ -1839,7 +2045,7 @@ export default function BakeryShop() {
                 }}>
                   ✦ 基本資料
                 </p>
-
+                
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
                   <div>
                     <label style={{
@@ -1855,7 +2061,7 @@ export default function BakeryShop() {
                       type="text"
                       placeholder="王"
                       value={registerForm.lastName}
-                      onChange={e => setRegisterForm({ ...registerForm, lastName: e.target.value })}
+                      onChange={e => setRegisterForm({...registerForm, lastName: e.target.value})}
                       style={{
                         width: '100%',
                         padding: 12,
@@ -1885,7 +2091,7 @@ export default function BakeryShop() {
                       type="text"
                       placeholder="小明"
                       value={registerForm.firstName}
-                      onChange={e => setRegisterForm({ ...registerForm, firstName: e.target.value })}
+                      onChange={e => setRegisterForm({...registerForm, firstName: e.target.value})}
                       style={{
                         width: '100%',
                         padding: 12,
@@ -1902,7 +2108,7 @@ export default function BakeryShop() {
                     {formErrors.firstName && <span style={{ fontSize: 10, color: theme.gold }}>{formErrors.firstName}</span>}
                   </div>
                 </div>
-
+                
                 <div style={{ marginBottom: 12 }}>
                   <label style={{
                     display: 'block',
@@ -1917,7 +2123,7 @@ export default function BakeryShop() {
                     type="email"
                     placeholder="your@email.com"
                     value={registerForm.email}
-                    onChange={e => setRegisterForm({ ...registerForm, email: e.target.value })}
+                    onChange={e => setRegisterForm({...registerForm, email: e.target.value})}
                     style={{
                       width: '100%',
                       padding: 12,
@@ -1933,7 +2139,7 @@ export default function BakeryShop() {
                   />
                   {formErrors.email && <span style={{ fontSize: 10, color: theme.gold }}>{formErrors.email}</span>}
                 </div>
-
+                
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                   <div>
                     <label style={{
@@ -1949,7 +2155,7 @@ export default function BakeryShop() {
                       type="tel"
                       placeholder="0912345678"
                       value={registerForm.phone}
-                      onChange={e => setRegisterForm({ ...registerForm, phone: e.target.value })}
+                      onChange={e => setRegisterForm({...registerForm, phone: e.target.value})}
                       style={{
                         width: '100%',
                         padding: 12,
@@ -1978,7 +2184,7 @@ export default function BakeryShop() {
                     <input
                       type="date"
                       value={registerForm.birthDate}
-                      onChange={e => setRegisterForm({ ...registerForm, birthDate: e.target.value })}
+                      onChange={e => setRegisterForm({...registerForm, birthDate: e.target.value})}
                       style={{
                         width: '100%',
                         padding: 12,
@@ -1996,7 +2202,7 @@ export default function BakeryShop() {
                   </div>
                 </div>
               </div>
-
+              
               {/* 密碼設定 */}
               <div style={{
                 borderBottom: `1px solid ${theme.border}`,
@@ -2012,7 +2218,7 @@ export default function BakeryShop() {
                 }}>
                   ✦ 密碼設定
                 </p>
-
+                
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                   <div>
                     <label style={{
@@ -2028,7 +2234,7 @@ export default function BakeryShop() {
                       type="password"
                       placeholder="至少8字元"
                       value={registerForm.password}
-                      onChange={e => setRegisterForm({ ...registerForm, password: e.target.value })}
+                      onChange={e => setRegisterForm({...registerForm, password: e.target.value})}
                       style={{
                         width: '100%',
                         padding: 12,
@@ -2058,7 +2264,7 @@ export default function BakeryShop() {
                       type="password"
                       placeholder="••••••••"
                       value={registerForm.confirmPassword}
-                      onChange={e => setRegisterForm({ ...registerForm, confirmPassword: e.target.value })}
+                      onChange={e => setRegisterForm({...registerForm, confirmPassword: e.target.value})}
                       style={{
                         width: '100%',
                         padding: 12,
@@ -2076,7 +2282,7 @@ export default function BakeryShop() {
                   </div>
                 </div>
               </div>
-
+              
               {/* 同意條款 */}
               <div style={{ marginBottom: 24 }}>
                 <label style={{
@@ -2092,7 +2298,7 @@ export default function BakeryShop() {
                   <input
                     type="checkbox"
                     checked={registerForm.newsletter}
-                    onChange={e => setRegisterForm({ ...registerForm, newsletter: e.target.checked })}
+                    onChange={e => setRegisterForm({...registerForm, newsletter: e.target.checked})}
                     style={{ accentColor: theme.gold, marginTop: 2 }}
                   />
                   <span>訂閱電子報，獲得最新優惠</span>
@@ -2109,7 +2315,7 @@ export default function BakeryShop() {
                   <input
                     type="checkbox"
                     checked={registerForm.agreeTerms}
-                    onChange={e => setRegisterForm({ ...registerForm, agreeTerms: e.target.checked })}
+                    onChange={e => setRegisterForm({...registerForm, agreeTerms: e.target.checked})}
                     style={{ accentColor: theme.gold, marginTop: 2 }}
                   />
                   <span>
@@ -2117,7 +2323,7 @@ export default function BakeryShop() {
                   </span>
                 </label>
               </div>
-
+              
               <button
                 type="submit"
                 style={{
@@ -2138,7 +2344,7 @@ export default function BakeryShop() {
                 建立帳號
               </button>
             </form>
-
+            
             <p style={{
               textAlign: 'center',
               color: theme.textSecondary,
@@ -2383,8 +2589,8 @@ export default function BakeryShop() {
                     width: '100%',
                     padding: 16,
                     border: 'none',
-                    background: checkoutComplete
-                      ? theme.textMuted
+                    background: checkoutComplete 
+                      ? theme.textMuted 
                       : `linear-gradient(135deg, ${theme.gold} 0%, ${theme.goldDark} 100%)`,
                     color: '#fff',
                     fontSize: 13,
@@ -2446,7 +2652,7 @@ export default function BakeryShop() {
               每日新鮮手工烘焙
             </p>
           </div>
-
+          
           <div>
             <h5 style={{
               fontSize: 11,
@@ -2469,7 +2675,7 @@ export default function BakeryShop() {
               </p>
             ))}
           </div>
-
+          
           <div>
             <h5 style={{
               fontSize: 11,
@@ -2492,7 +2698,7 @@ export default function BakeryShop() {
               </p>
             ))}
           </div>
-
+          
           <div>
             <h5 style={{
               fontSize: 11,
@@ -2548,7 +2754,7 @@ export default function BakeryShop() {
             </div>
           </div>
         </div>
-
+        
         <div style={{
           maxWidth: 1200,
           margin: '40px auto 0',
@@ -2593,6 +2799,15 @@ export default function BakeryShop() {
         @keyframes slideInRight {
           from { transform: translateX(100%); }
           to { transform: translateX(0); }
+        }
+        
+        @keyframes slideNews {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        
+        .news-slider:hover {
+          animation-play-state: paused;
         }
         
         /* 響應式設計 */
