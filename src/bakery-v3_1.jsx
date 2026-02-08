@@ -208,6 +208,7 @@ export default function BakeryShop() {
   const [selectedCategory, setSelectedCategory] = useState('全部');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedNews, setSelectedNews] = useState(null);
+  const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   
@@ -232,6 +233,14 @@ export default function BakeryShop() {
     const timer = setInterval(() => {
       setCurrentAnnouncementIndex(prev => (prev + 1) % announcements.length);
     }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // 最新消息輪播
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentNewsIndex(prev => (prev + 1) % newsItems.length);
+    }, 3500);
     return () => clearInterval(timer);
   }, []);
 
@@ -1264,118 +1273,152 @@ export default function BakeryShop() {
                 </div>
               </div>
 
-              {/* 橫式滑動公告 */}
+              {/* 輪播公告 */}
               <div style={{
-                overflow: 'hidden',
-                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 20,
+                minHeight: 280,
               }}>
-                <div 
-                  className="news-slider"
-                  style={{
-                    display: 'flex',
-                    gap: 20,
-                    animation: 'slideNews 20s linear infinite',
-                    width: 'fit-content',
-                  }}
-                >
-                  {/* 複製兩次以實現無縫滾動 */}
-                  {[...newsItems, ...newsItems].map((news, idx) => (
+                {newsItems.map((news, idx) => {
+                  const isActive = idx === currentNewsIndex;
+                  const isPrev = idx === (currentNewsIndex - 1 + newsItems.length) % newsItems.length;
+                  const isNext = idx === (currentNewsIndex + 1) % newsItems.length;
+                  const isVisible = isActive || isPrev || isNext;
+
+                  if (!isVisible) return null;
+
+                  return (
                     <div
-                      key={`${news.id}-${idx}`}
-                      onClick={() => setSelectedNews(news)}
+                      key={news.id}
+                      onClick={() => {
+                        if (isActive) {
+                          setSelectedNews(news);
+                        } else {
+                          setCurrentNewsIndex(idx);
+                        }
+                      }}
                       style={{
-                        width: 220,
-                        height: 220,
-                        padding: 20,
+                        width: isActive ? 260 : 140,
+                        height: isActive ? 260 : 140,
+                        padding: isActive ? 24 : 16,
                         backgroundColor: theme.bgSecondary,
-                        border: `1px solid ${theme.border}`,
-                        borderRadius: 12,
+                        border: `1px solid ${isActive ? theme.gold : theme.border}`,
+                        borderRadius: 16,
                         cursor: 'pointer',
                         flexShrink: 0,
                         display: 'flex',
                         flexDirection: 'column',
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.5s ease',
                         position: 'relative',
                         overflow: 'hidden',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'translateY(-5px)';
-                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'translateY(0)';
-                        e.currentTarget.style.boxShadow = 'none';
+                        opacity: isActive ? 1 : 0.6,
+                        transform: isActive ? 'scale(1)' : 'scale(0.9)',
+                        boxShadow: isActive ? '0 10px 40px rgba(0,0,0,0.15)' : 'none',
                       }}
                     >
                       {/* 圖示 */}
                       <div style={{
-                        fontSize: 36,
-                        marginBottom: 12,
+                        fontSize: isActive ? 40 : 24,
+                        marginBottom: isActive ? 16 : 8,
+                        transition: 'all 0.5s ease',
                       }}>
                         {news.image}
                       </div>
                       
                       {/* 標籤 */}
-                      <span style={{
-                        position: 'absolute',
-                        top: 12,
-                        right: 12,
-                        padding: '4px 8px',
-                        background: news.tag === '優惠' 
-                          ? `linear-gradient(135deg, ${theme.gold} 0%, ${theme.goldDark} 100%)`
-                          : news.tag === '新品' 
-                            ? 'linear-gradient(135deg, #6b8f6b 0%, #4a6b4a 100%)'
-                            : `linear-gradient(135deg, ${theme.textMuted} 0%, ${theme.textSecondary} 100%)`,
-                        color: '#fff',
-                        fontSize: 10,
-                        fontFamily: "'Noto Sans TC', sans-serif",
-                        borderRadius: 4,
-                      }}>
-                        {news.tag}
-                      </span>
+                      {isActive && (
+                        <span style={{
+                          position: 'absolute',
+                          top: 16,
+                          right: 16,
+                          padding: '4px 10px',
+                          background: news.tag === '優惠' 
+                            ? `linear-gradient(135deg, ${theme.gold} 0%, ${theme.goldDark} 100%)`
+                            : news.tag === '新品' 
+                              ? 'linear-gradient(135deg, #6b8f6b 0%, #4a6b4a 100%)'
+                              : `linear-gradient(135deg, ${theme.textMuted} 0%, ${theme.textSecondary} 100%)`,
+                          color: '#fff',
+                          fontSize: 10,
+                          fontFamily: "'Noto Sans TC', sans-serif",
+                          borderRadius: 4,
+                        }}>
+                          {news.tag}
+                        </span>
+                      )}
 
                       {/* 標題 */}
                       <h4 style={{
-                        fontSize: 14,
+                        fontSize: isActive ? 16 : 12,
                         fontWeight: 600,
                         margin: '0 0 8px 0',
                         lineHeight: 1.4,
                         display: '-webkit-box',
-                        WebkitLineClamp: 2,
+                        WebkitLineClamp: isActive ? 2 : 1,
                         WebkitBoxOrient: 'vertical',
                         overflow: 'hidden',
+                        transition: 'all 0.5s ease',
                       }}>
                         {news.title}
                       </h4>
 
-                      {/* 內容預覽 */}
-                      <p style={{
-                        fontSize: 12,
-                        color: theme.textSecondary,
-                        margin: 0,
-                        lineHeight: 1.6,
-                        flex: 1,
-                        display: '-webkit-box',
-                        WebkitLineClamp: 3,
-                        WebkitBoxOrient: 'vertical',
-                        overflow: 'hidden',
-                        fontFamily: "'Noto Sans TC', sans-serif",
-                      }}>
-                        {news.content}
-                      </p>
+                      {/* 內容預覽（只在 active 時顯示） */}
+                      {isActive && (
+                        <p style={{
+                          fontSize: 13,
+                          color: theme.textSecondary,
+                          margin: 0,
+                          lineHeight: 1.7,
+                          flex: 1,
+                          display: '-webkit-box',
+                          WebkitLineClamp: 3,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                          fontFamily: "'Noto Sans TC', sans-serif",
+                        }}>
+                          {news.content}
+                        </p>
+                      )}
 
-                      {/* 日期 */}
-                      <div style={{
-                        fontSize: 11,
-                        color: theme.textMuted,
-                        marginTop: 10,
-                        fontFamily: "'Noto Sans TC', sans-serif",
-                      }}>
-                        {news.date}
-                      </div>
+                      {/* 日期（只在 active 時顯示） */}
+                      {isActive && (
+                        <div style={{
+                          fontSize: 11,
+                          color: theme.textMuted,
+                          marginTop: 12,
+                          fontFamily: "'Noto Sans TC', sans-serif",
+                        }}>
+                          {news.date}
+                        </div>
+                      )}
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
+              </div>
+
+              {/* 指示點 */}
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: 10,
+                marginTop: 30,
+              }}>
+                {newsItems.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentNewsIndex(idx)}
+                    style={{
+                      width: idx === currentNewsIndex ? 24 : 10,
+                      height: 10,
+                      borderRadius: 5,
+                      border: 'none',
+                      backgroundColor: idx === currentNewsIndex ? theme.gold : theme.border,
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                    }}
+                  />
+                ))}
               </div>
 
               {/* 點擊提示 */}
@@ -1383,10 +1426,10 @@ export default function BakeryShop() {
                 textAlign: 'center',
                 fontSize: 12,
                 color: theme.textMuted,
-                marginTop: 24,
+                marginTop: 16,
                 fontFamily: "'Noto Sans TC', sans-serif",
               }}>
-                點擊卡片查看完整內容
+                點擊中間卡片查看完整內容
               </p>
             </div>
           </section>
@@ -2799,15 +2842,6 @@ export default function BakeryShop() {
         @keyframes slideInRight {
           from { transform: translateX(100%); }
           to { transform: translateX(0); }
-        }
-        
-        @keyframes slideNews {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        
-        .news-slider:hover {
-          animation-play-state: paused;
         }
         
         /* 響應式設計 */
